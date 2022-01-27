@@ -2,12 +2,10 @@ from itertools import permutations
 
 post_office = (0, 2)
 waypoints = [
-    (1, 3),
-    (2, 2),
-    (1, 1),
-    (4, 2),
-    (3, 1),
-    (3, 3),
+    (2, 5),
+    (5, 2),
+    (6, 6),
+    (8, 3),
 ]
 
 
@@ -24,7 +22,7 @@ def calc_routes(points: list[tuple], post_office: tuple) -> tuple:
     min_dist, min_paths = float("inf"), []
 
     for path in permutations(points):
-        path = (post_office,) + path
+        path = (post_office,) + path + (post_office,)
         dist = sum((edges[path[i]][path[i + 1]] for i in range(len(path) - 1)))
 
         if dist < min_dist:
