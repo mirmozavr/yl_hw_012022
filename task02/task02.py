@@ -1,5 +1,5 @@
 from itertools import cycle
-from random import randint, shuffle
+from random import shuffle
 from typing import Tuple
 
 
@@ -57,13 +57,12 @@ def pc_move(legal_moves: set, sign: str, field) -> Tuple:
 
 
 def human_move(legal_moves: set, *args, **kwargs) -> Tuple:
-    """Get input and validate.
+    """Get input and validate if row and column are integers between 1 and 10
+    and play field cell is empty.
     Return 0-indexed coordinates"""
     while True:
         try:
             x, y = map(int, input("Enter row and column. Space separated. ").split())
-            # uncomment line below for automated random human input
-            # x, y = randint(1, 10), randint(1, 10)
         except ValueError as e:
             print(e)
         else:
